@@ -5,6 +5,7 @@ const userSchema = new Schema({
   //For all user types
   role: {
     type: String,
+    required: [true, "Role is required."],
     enum: ["musician", "band", "venue"],
     default: "musician",
   },
@@ -28,8 +29,7 @@ const userSchema = new Schema({
     required: [true, "Location is required."],
   },
   bio: {
-    type: String,
-    required: [true, "Biography is required."],
+    type: String
   },
   socialLinks: {
     instagram: String,
@@ -50,7 +50,7 @@ const userSchema = new Schema({
 
   // For bands
   bandName: String,
-  members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // linked musician accounts
+  members: [{ type: Schema.Types.ObjectId, ref: "User" }], // linked musician accounts
   bandGenres: [String],
   bandLookingFor: [String], // e.g. ['Guitarist', 'Drummer']
 

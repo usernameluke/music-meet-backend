@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 
 const eventPostSchema = new Schema({
   author: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    type: Schema.Types.ObjectId, ref: 'User'
   },
   title: {
     type: String,
@@ -17,7 +17,12 @@ const eventPostSchema = new Schema({
     type: String,
     required: [true, "Need a location."],
   },
+  imageUrl: {
+    type: String,
+    required: false
+  },
   eventDate: Date,
+  eventTime: String,
   compensation: {
     type: String,
     required: [true, "Need compensation information."],
