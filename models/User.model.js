@@ -38,21 +38,22 @@ const userSchema = new Schema({
   },
 
   //For musicians
-  instruments: [String],
-  genres: [String],
+  instruments: String, 
+  
+  genres: String,
   experienceLevel: {
     type: String,
     enum: ["Beginner", "Intermediate", "Advanced"],
   },
   inBand: Boolean,
-  lookingFor: [String], // e.g. ['Jam Session', 'Band', 'Collab']
-  availability: [String], // e.g. ['Weekends', 'Evenings'],
+  lookingFor: String, // e.g. ['Jam Session', 'Band', 'Collab']
+  availability: String, // e.g. ['Weekends', 'Evenings'],
 
   // For bands
   bandName: String,
   members: [{ type: Schema.Types.ObjectId, ref: "User" }], // linked musician accounts
-  bandGenres: [String],
-  bandLookingFor: [String], // e.g. ['Guitarist', 'Drummer']
+  bandGenres: String,
+  bandLookingFor: String, // e.g. ['Guitarist', 'Drummer']
 
   // For venues
   venueName: String,

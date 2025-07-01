@@ -64,7 +64,7 @@ router.post('/signup', (req, res, next) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ message: "Internal Server Error" })
+      res.status(500).json({ message: "Internal Server Error" });
     });
 });
 
@@ -94,10 +94,10 @@ router.post('/login', (req, res, next) => {
  
       if (passwordCorrect) {
         // Deconstruct the user object to omit the password
-        const { _id, email, name } = foundUser;
+        const { _id, email, name, role, location} = foundUser;
         
         // Create an object that will be set as the token payload
-        const payload = { _id, email, name };
+        const payload = { _id, email, name, role, location};
  
         // Create and sign the token
         const authToken = jwt.sign( 
