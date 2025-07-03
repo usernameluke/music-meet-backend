@@ -67,18 +67,17 @@ router.get("/profile", isAuthenticated, (req, res) => {
 });
 
 router.delete("/profile", isAuthenticated, (req, res) => {
+
   const { _id } = req.payload;
 
-   res.json({ message: "Profile has been deleted" });
-   return;
-  // User.findByIdAndDelete(_id)
-  //   .then(() => {
-  //     res.json({ message: "Profile has been deleted" });
-  //   })
-  //   .catch((err) => {
-  //     console.error("Error finding user profile info:", err);
-  //     res.status(500).json({ message: err.message });
-  //   });
+  User.findByIdAndDelete(_id)
+    .then(() => {
+      res.json({ message: "Profile has been deleted" });
+    })
+    .catch((err) => {
+      console.error("Error finding user profile info:", err);
+      res.status(500).json({ message: err.message });
+    });
 });
 
 module.exports = router;
