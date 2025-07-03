@@ -29,17 +29,16 @@ const userSchema = new Schema({
     required: [true, "Location is required."],
   },
   bio: {
-    type: String
-  },
-  socialLinks: {
-    instagram: String,
-    youtube: String,
-    website: String,
+    type: String,
   },
 
+  instagram: String,
+  youtube: String,
+  website: String,
+
   //For musicians
-  instruments: String, 
-  
+  instruments: String,
+
   genres: String,
   experienceLevel: {
     type: String,
@@ -59,7 +58,7 @@ const userSchema = new Schema({
   venueName: String,
   address: String,
   capacity: Number,
-  website: String,
+  personalSite: String,
 
   createdAt: {
     type: Date,

@@ -12,7 +12,9 @@ router.put("/profile", isAuthenticated, (req, res) => {
   // Allowed fields you specified:
   const allowedFields = [
     "bio",
-    "socialLinks",
+    "instagram",
+    "youtube",
+    "website",
     "instruments",
     "genres",
     "experienceLevel",
@@ -26,7 +28,7 @@ router.put("/profile", isAuthenticated, (req, res) => {
     "venueName",
     "address",
     "capacity",
-    "website",
+    "personalSite",
   ];
 
   // Filter the updateData to only include allowed fields
@@ -62,6 +64,21 @@ router.get("/profile", isAuthenticated, (req, res) => {
       console.error("Error finding user profile info:", err);
       res.status(500).json({ message: err.message });
     });
+});
+
+router.delete("/profile", isAuthenticated, (req, res) => {
+  const { _id } = req.payload;
+
+   res.json({ message: "Profile has been deleted" });
+   return;
+  // User.findByIdAndDelete(_id)
+  //   .then(() => {
+  //     res.json({ message: "Profile has been deleted" });
+  //   })
+  //   .catch((err) => {
+  //     console.error("Error finding user profile info:", err);
+  //     res.status(500).json({ message: err.message });
+  //   });
 });
 
 module.exports = router;
