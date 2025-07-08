@@ -18,6 +18,7 @@ router.post("/", isAuthenticated, fileUploader.single("imageUrl"), (req, res, ne
     type,
     instrumentsNeeded,
     genres,
+    accomodation
   } = req.body;
 
   const author = req.payload._id;
@@ -36,6 +37,7 @@ router.post("/", isAuthenticated, fileUploader.single("imageUrl"), (req, res, ne
     type,
     instrumentsNeeded,
     genres,
+    accomodation
   })
     .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err));
@@ -46,7 +48,10 @@ router.get("/", (req, res, next) => {
   Event.find()
     .sort({ createdAt: -1 })
     .then((allEvents) => res.json(allEvents))
-    .catch((err) => res.status(500).json(err));
+    .catch((err) => {
+      console.error("Error creating event:", err),
+      res.status(500).json(err);
+    })
 });
 
 // GET /api/events/:eventId - Retrieves specific event
@@ -58,7 +63,7 @@ router.get("/:eventId", (req, res, next) => {
   }
 
   Event.findById(eventId)
-    .populate("author", "username")
+    .populate("author", "name _id")
     .then((event) => res.status(200).json(event))
     .catch((error) => res.status(500).json(error));
 });

@@ -1,5 +1,5 @@
+const mongoose = require("mongoose");
 const { Schema, model } = require("mongoose");
-
 
 const eventPostSchema = new Schema({
   author: {
@@ -32,12 +32,13 @@ const eventPostSchema = new Schema({
     enum: ["Jam Session", "Band Try Outs", "Collab", "Gig", "Fest"],
     default: "Jam Session"
   },
-  instrumentsNeeded: [String],
-  genres: [String],
+  instrumentsNeeded: String,
+  genres: String,
+  accomodation: Boolean,
 
   createdAt: { type: Date, default: Date.now }
 });
 
-const eventPost = model("eventPost", eventPostSchema);
+const eventPost = mongoose.models.eventPost || model("eventPost", eventPostSchema);
 
 module.exports = eventPost;

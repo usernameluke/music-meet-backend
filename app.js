@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 require("./config")(app);
 
-
+require("./models/eventPost.model");
 
 // Routes
 const eventPostRouter = require("./routes/eventPost.routes");
@@ -25,6 +25,9 @@ app.use("/auth", authRouter);
 
 const userRouter = require("./routes/user.routes");
 app.use("/users", isAuthenticated, userRouter);
+
+const favouriteRouter = require("./routes/favourite.routes");
+app.use("/api/favourites", isAuthenticated, favouriteRouter)
 
 require("./error-handling")(app);
 

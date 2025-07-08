@@ -38,7 +38,6 @@ const userSchema = new Schema({
 
   //For musicians
   instruments: String,
-
   genres: String,
   experienceLevel: {
     type: String,
@@ -49,16 +48,15 @@ const userSchema = new Schema({
   availability: String, // e.g. ['Weekends', 'Evenings'],
 
   // For bands
-  bandName: String,
   members: [{ type: Schema.Types.ObjectId, ref: "User" }], // linked musician accounts
   bandGenres: String,
   bandLookingFor: String, // e.g. ['Guitarist', 'Drummer']
 
   // For venues
-  venueName: String,
   address: String,
+  pay: String,
+  lodging: Boolean,
   capacity: Number,
-  personalSite: String,
 
   createdAt: {
     type: Date,
