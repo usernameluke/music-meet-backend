@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 require("./config")(app);
 
-require("./models/eventPost.model");
+require("./models/EventPost.model");
 
 // Routes
 const eventPostRouter = require("./routes/eventPost.routes");
